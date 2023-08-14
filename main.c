@@ -99,34 +99,40 @@ int main() {
         ClearBackground(RAYWHITE);
     }
 
-    while (!WindowShouldClose() && win == true)
+
+    if(win == true)
     {
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
+		while (!WindowShouldClose())
+		    {
+		        BeginDrawing();
+		        ClearBackground(RAYWHITE);
 
-        DrawText("Player has won! Press ESC to exit.", 3, GetScreenHeight() / 2, 18, BLACK);
+		        DrawText("Player has won! Press ESC to exit.", 3, GetScreenHeight() / 2, 18, BLACK);
 
-        EndDrawing();
-        
-        if (IsKeyPressed(KEY_ESCAPE)) 
-        {
-            break; // Exit when ESC key is pressed
-        }
+		        EndDrawing();
+		        
+		        if (IsKeyPressed(KEY_ESCAPE)) 
+		        {
+		            break; // Exit when ESC key is pressed
+		        }
+		    }
     }
-
-    while (!WindowShouldClose())
+    else
     {
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
+	    while (!WindowShouldClose())
+	    {
+	        BeginDrawing();
+	        ClearBackground(RAYWHITE);
 
-        DrawText("DRAW", GetScreenWidth() / 2 - 25, (GetScreenHeight() / 2) - 5, 20, BLACK);
+	        DrawText("DRAW", GetScreenWidth() / 2 - 25, (GetScreenHeight() / 2) - 5, 20, BLACK);
 
-        EndDrawing();
-        
-        if (IsKeyPressed(KEY_ESCAPE)) 
-        {
-            break; // Exit when ESC key is pressed
-        }
+	        EndDrawing();
+	        
+	        if (IsKeyPressed(KEY_ESCAPE)) 
+	        {
+	            break;
+	        }
+	    }
     }
 
     CloseWindow();
