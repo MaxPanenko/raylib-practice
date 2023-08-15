@@ -21,12 +21,28 @@ void UpdateAsteroid(Asteroid* asteroid, float frametime)
 	{
 		return;
 	}
-	asteroid->position = Vector2Add(asteroid->position,
+	
+	if(asteroid->size > 1)
+	{
+		asteroid->position = Vector2Add(asteroid->position,
 		Vector2Scale(asteroid->velocity,frametime));
-	asteroid->rotation += asteroid->rotationSpeed * frametime;
+		asteroid->rotation += asteroid->rotationSpeed * frametime;
+	}
+	else
+	{
+		asteroid->position = Vector2Subtract(asteroid->position,
+		Vector2Scale(asteroid->velocity,frametime));
+		asteroid->rotation += asteroid->rotationSpeed * frametime;
+	}
+	
 }
 
 void AsteroidDraw(Asteroid asteroid)
 {
-	DrawPolyLines(asteroid.position,3,64,asteroid.rotation,WHITE);
+	if (!asteroid.active)
+	{
+		return;
+	}
+
+	DrawPolyLines(asteroid.position,3,16 *(int)(asteroid.size),asteroid.rotation,WHITE);
 }
