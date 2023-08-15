@@ -21,19 +21,10 @@ void UpdateAsteroid(Asteroid* asteroid, float frametime)
 	{
 		return;
 	}
-	
-	if(asteroid->size > 1)
-	{
-		asteroid->position = Vector2Add(asteroid->position,
-		Vector2Scale(asteroid->velocity,frametime));
-		asteroid->rotation += asteroid->rotationSpeed * frametime;
-	}
-	else
-	{
-		asteroid->position = Vector2Subtract(asteroid->position,
-		Vector2Scale(asteroid->velocity,frametime));
-		asteroid->rotation += asteroid->rotationSpeed * frametime;
-	}
+
+	asteroid->position = Vector2Add(asteroid->position,
+	Vector2Scale(asteroid->velocity,frametime));
+	asteroid->rotation += asteroid->rotationSpeed * frametime;
 	
 }
 

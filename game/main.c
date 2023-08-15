@@ -10,7 +10,7 @@ const int height = 600;
 const Vector2 screenCenter = {width / 2,height / 2};
 
 #define MAX_ASTEROIDS 64
-#define ASTEROID_RANDOM_ANGLE 30
+#define ASTEROID_RANDOM_ANGLE 30 * DEG2RAD
 #define ASTEROID_SPEED_MIN 100
 #define ASTEROID_SPEED_MAX 300
 
