@@ -19,6 +19,7 @@ static AsteroidSize _sizes[] = {SMALL,MEDIUM,LARGE};
 
 void UpdateDrawFrame(void);
 void AsteroidAdd(Vector2 position, AsteroidSize size);
+Vector2 GetNextAsteroidPositon(void);
 
 int main()
 {
@@ -49,7 +50,7 @@ void UpdateDrawFrame(void)
 	{
 		AsteroidSize nextSize = _sizes[GetRandomValue(0,2)];
 		TraceLog(LOG_INFO,"Next Size: %d",(int)nextSize);
-		AsteroidAdd(GetMousePosition(), nextSize);
+		AsteroidAdd(GetNextAsteroidPositon(), nextSize);
 	}
 
 	BeginDrawing();
@@ -87,4 +88,31 @@ void AsteroidAdd(Vector2 position, AsteroidSize size)
 	{
 		TraceLog(LOG_ERROR, "Failed");
 	}
+}
+
+Vector2 GetNextAsteroidPositon(void)
+{
+	Vector2 result = {-128,128};
+
+	if(GetRandomValue(0,1))
+	{
+		if(GetRandomValue(0,1))
+		{
+			result.y = width + 128;
+		}
+
+		result.x = GetRandomValue(-128, 128 + width);
+		
+	}
+	else
+	{
+		if(GetRandomValue(0,1))
+		{
+			result.x = width + 128;
+		}
+
+		result.y = GetRandomValue(-128, 128 + width);
+	}
+
+	return result;
 }
