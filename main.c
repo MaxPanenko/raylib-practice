@@ -45,6 +45,7 @@ int main() {
 
     int currentPlayer = 1; // Player 'X'
     bool win = false;
+    int winOrLose = 0;
 
     while (!WindowShouldClose() && !win) 
     {
@@ -63,6 +64,10 @@ int main() {
                 if (checkIfWin(board, ROWS, COLS, currentPlayer)) 
                 {
                     win = true;
+                }
+                else
+                {
+                    winOrLose++;
                 }
 
                 // Switch players
@@ -95,6 +100,26 @@ int main() {
             }
         }
 
+        if(winOrLose == 9)
+        {
+            while (!WindowShouldClose())
+            {
+                BeginDrawing();
+                ClearBackground(RAYWHITE);
+
+                DrawText("DRAW", GetScreenWidth() / 2 - 25, (GetScreenHeight() / 2) - 5, 20, BLACK);
+
+                EndDrawing();
+                
+                if (IsKeyPressed(KEY_ESCAPE)) 
+                {
+                    break;
+                }
+            }
+            win = false;
+            break;
+        }
+
         EndDrawing();
         ClearBackground(RAYWHITE);
     }
@@ -116,23 +141,6 @@ int main() {
 		            break; // Exit when ESC key is pressed
 		        }
 		    }
-    }
-    else
-    {
-	    while (!WindowShouldClose())
-	    {
-	        BeginDrawing();
-	        ClearBackground(RAYWHITE);
-
-	        DrawText("DRAW", GetScreenWidth() / 2 - 25, (GetScreenHeight() / 2) - 5, 20, BLACK);
-
-	        EndDrawing();
-	        
-	        if (IsKeyPressed(KEY_ESCAPE)) 
-	        {
-	            break;
-	        }
-	    }
     }
 
     CloseWindow();
