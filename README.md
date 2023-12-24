@@ -1,1 +1,1 @@
-# raylib-practice
+# raylib-practice-course
