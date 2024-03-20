@@ -35,7 +35,7 @@ bool checkIfWin(int board[][COLS], int numROWS, int numCOLS, int player)
 }
 
 int main() {
-	SetTargetFPS(60);
+	SetTargetFPS(144);
     InitWindow(COLS * CELL_SIZE, ROWS * CELL_SIZE, "Tic-Tac-Toe");
 
     int board[ROWS][COLS] = 
@@ -49,6 +49,9 @@ int main() {
 
     while (!WindowShouldClose() && !win) 
     {
+
+        SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) 
         {
             int mouseX = GetMouseX();
