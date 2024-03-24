@@ -28,6 +28,10 @@ int main ()
 
     InitWindow(screenWidth, screenHeight, "raylib [core] example - 2d camera mouse zoom");
 
+
+
+    Font font = LoadFont("resources/fonts/alagard.png");
+
     Camera2D camera = { 0 };
     camera.zoom = 1.0f;
 
@@ -103,6 +107,8 @@ int main ()
         if (circlePos.y + circleRadius > camera.target.y + screenHeight / 2 - edgeOffset)
             camera.target.y += moveSpeed / camera.zoom;
 
+        const char message[128] = "Kero";
+
 
 
         //----------------------------------------------------------------------------------
@@ -111,6 +117,9 @@ int main ()
         //----------------------------------------------------------------------------------
         BeginDrawing();
             ClearBackground(BLACK);
+
+            
+
 
             BeginMode2D(camera);
 
@@ -127,13 +136,14 @@ int main ()
                 
             EndMode2D();
 
-            DrawText("Mouse right button drag to move, mouse wheel to zoom", 10, 10, 20, WHITE);
+            DrawTextEx(font,message,circlePos, 30, 2, WHITE);
         
         EndDrawing();
         //----------------------------------------------------------------------------------
     }
 
     // De-Initialization
+    UnloadFont(font);
     //--------------------------------------------------------------------------------------
     CloseWindow();        // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
